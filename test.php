@@ -31,6 +31,7 @@
 			margin: 0 auto;
 		}
 	</style>
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.js"></script>
 	<script type="text/javascript" src="jquery.js"></script>
 	<script type="text/javascript">
 	loadXML = function(xmlString){
@@ -135,7 +136,6 @@
 			})
 
 			$(".send").click(function(){
-
 				var tousername,fromusername,msgtype,content,funcflag;
 				var url = $(".url")[0].value;
 				var keyword = $(".keyword")[0].value;
@@ -155,7 +155,7 @@
 				data = data.replace("{content}",content);
 				data = data.replace("{funcflag}",funcflag);
 				data = data.replace("{url}",url);
-				$(".keyword")[0].value = "";
+				//$(".keyword")[0].value = "";
 				var messageBoxContent = $(".messageBox").html();
 				var html = messageBoxContent + "<span class='left'>你说："+keyword+"</span>";
 				$(".messageBox").html(html);
@@ -181,10 +181,10 @@
 	</script>
 </head>
 <body>
-  <script src="jquery.js"></script>
+  <script src="http://page.kungg.com/App/index.php/WeixinRestN"></script>
 <div id="wrapper">
     <h2>微信公众平台功能在线测试：</h2>
-	API地址:<input class="url" type="text" value="" placeholder="请输入API地址">
+	API地址:<input class="url" type="text" value="http://127.0.0.1/App/index.php/WeixinRestN" placeholder="请输入API地址">
 	<div class="messageBox"></div>
 	<div calss="text">输入内容：<input type="text" class="keyword" value="" placeholder="请在此输入内容"><br></div>
 	<div class="position">
@@ -192,8 +192,8 @@
 		x：<input type="text" class="xposition" placeholder="X坐标" /><br>
 		y：<input type="text" class="Yposition" placeholder="Y坐标" />
 	</div>
-	发送者openID:<input type="text" class="sendname" value="xred"><br>
-	接收者openID:<br><input type="text" class="receivename" value="wechat"><br>
+	接收者openID:<input type="text" class="sendname" value="xred"><br>
+	发送者openID:<br><input type="text" class="receivename" value="wechat"><br>
 	<form action="buy.php" method="post">
 			<input type="button" class="send btn " value="发送" />			
 	</form>

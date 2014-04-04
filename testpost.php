@@ -1,5 +1,14 @@
 <?php 
 function post($url,$post_data){
+    $timestamp = time();
+    $nonce = md5('asdad');
+    $token = '90fdlmlwease233';
+    $tmpArr = array($token, $timestamp, $nonce);
+    sort($tmpArr, SORT_STRING);
+    $tmpStr = implode( $tmpArr );
+    $signature = sha1($tmpStr);
+    $url = $url."?signature=$signature&nonce=$nonce&timestamp=$timestamp&echostr=echostr";
+    setcookie('url',$url);
     $ch = curl_init($url); //初始化
     curl_setopt($ch, CURLOPT_HEADER, 0); //返回header部分
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //返回字符串，而非直接输出
